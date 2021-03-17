@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chiaki.mapper.StudentMapper">
+
+    <select id="findAll" resultType="com.chiaki.entity.Student">
+        SELECT * FROM student
+    </select>
+
+    <select id="getStudentById" parameterType="int" resultType="com.chiaki.entity.Student">
+        SELECT id,name,sex FROM student WHERE id = #{id}
+    </select>
+
+    <insert id="insertStudent" parameterType="com.chiaki.entity.Student" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO student(name,sex) VALUES(#{name}, #{sex})
+    </insert>
+
+    <update id="updateStudentName">
+        UPDATE student SET name = #{name} WHERE id = #{id}
+    </update>
+</mapper>
